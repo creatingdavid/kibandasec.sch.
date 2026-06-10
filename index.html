@@ -57,8 +57,10 @@ header{
  h1 {
      Color: brown;
      margin-top: 30px;
+     margin-bottom:10px;
      font-family:Georgia, serif;
-     font-size:22px;
+     font-size:25px;
+     text-align: center;
  }
  
  .hero-content p {
@@ -70,8 +72,6 @@ header{
      border-radius:15px;
      color: green;
  }
-
-
 
 /* Logo styles */
 .logo {
@@ -263,14 +263,6 @@ section.active {
   margin-top: 20px;
 }
     
-    
-    
-    
-    
-    
-    
-    
-    
 /* =========================
    FOOTER
 ========================= */
@@ -348,14 +340,6 @@ section.active {
     display:none;
     justify-content:center;
     align-items:center;
-}
-
-/* =========================
-   HEADING
-========================= */
-h1{
-    font-size:28px;
-    text-align:center;
 }
 
 /* =========================
@@ -474,6 +458,8 @@ h1{
   </div>
 </section>
 
+
+
 <!-- Sample Sections -->
 <section id="about">
   <h2>About Us</h2>
@@ -481,96 +467,128 @@ h1{
     <p>Information about the school.</p>
   </div>
 </section>
+
+
 <section id="overview">
   <h2>Overview</h2>
   <div class="subsection">
     <p>School overview details.</p>
   </div>
 </section>
+
+
 <section id="board">
   <h2>Board of Directors</h2>
   <div class="subsection">
     <p>Details about the Board of Directors.</p>
   </div>
 </section>
+
+
 <section id="pta">
   <h2>PTA Committee</h2>
   <div class="subsection">
     <p>Details about PTA Committee.</p>
   </div>
 </section>
+
+
 <section id="facilities">
   <h2>Facilities</h2>
   <div class="subsection">
     <p>Details about facilities.</p>
   </div>
 </section>
+
+
 <section id="fees">
   <h2>Fees Structure</h2>
   <div class="subsection">
     <p>Information on fees.</p>
   </div>
 </section>
+
+
 <section id="feesDetails">
   <h2>Fees Details</h2>
   <div class="subsection">
     <p>Detailed fees info.</p>
   </div>
 </section>
+
+
 <section id="academics">
   <h2>Academics</h2>
   <div class="subsection">
     <p>Academic programs overview.</p>
   </div>
 </section>
+
+
 <section id="o-level">
   <h2>O-Level Subjects</h2>
   <div class="subsection">
     <p>List of O-Level subjects.</p>
   </div>
 </section>
+
+
 <section id="a-level">
   <h2>A-Level Subjects</h2>
   <div class="subsection">
     <p>List of A-Level subjects.</p>
   </div>
 </section>
+
+
 <section id="results">
   <h2>Results</h2>
   <div class="subsection">
     <p>School results info.</p>
   </div>
 </section>
+
+
 <section id="students">
   <h2>Students Life</h2>
   <div class="subsection">
     <p>Student life info.</p>
   </div>
 </section>
+
+
 <section id="leadership">
   <h2>Leadership</h2>
   <div class="subsection">
     <p>Leadership activities info.</p>
   </div>
 </section>
+
+
 <section id="clubs">
   <h2>Clubs</h2>
   <div class="subsection">
     <p>Clubs info.</p>
   </div>
 </section>
+
+
 <section id="sports">
   <h2>Sports</h2>
   <div class="subsection">
     <p>Sports activities info.</p>
   </div>
 </section>
+
+
 <section id="gallery">
   <h2>Gallery</h2>
   <div class="subsection">
     <p>Gallery images.</p>
   </div>
 </section>
+
+
 <section id="contact">
   <h2>Contact</h2>
   <div class="subsection">
@@ -619,13 +637,11 @@ h1{
   </div>
   <div class="footer-bottom" style="text-align:center; margin-top:10px;">
     <p>© 2026 Kibanda Secondary School. All Rights Reserved.</p>
-    <p>Designed By David Mpiga</p>
+    <p>Designed By David developer</p>
   </div>
 </footer>
 <!-- Scroll to top -->
 <a href="#home" class="top" id="topBtn">↑</a>
-
-
 
 <script>
 const menuBtn = document.getElementById("menuBtn");
@@ -704,10 +720,29 @@ document.querySelectorAll('.submenu a').forEach(link => {
   };
 });
 
+function showPopup(message) {
+  const popup = document.getElementById("customPopup");
+  const popupMessage = document.getElementById("popupMessage");
+
+  popupMessage.textContent = message;
+  popup.style.display = "flex";
+}
+
+function closePopup() {
+  document.getElementById("customPopup").style.display = "none";
+}
+
 // Search functionality
 searchBtn.onclick = () => {
-  const query = searchInput.value.toLowerCase();
+  const query = searchInput.value.toLowerCase().trim();
+
+  if (query === "") {
+    showPopup("Please enter a search keyword.");
+    return;
+  }
+
   let found = false;
+
   sections.forEach(sec => {
     if (sec.innerText.toLowerCase().includes(query)) {
       hideAllSections();
@@ -715,22 +750,23 @@ searchBtn.onclick = () => {
       found = true;
     }
   });
+
   if (!found) {
-    alert("No matching sections found.");
+    showPopup("Search result not found. Please try another keyword.");
   }
 };
 
 // Show back to top button
 window.onscroll = () => {
-  if (window.scrollY > 300) {
-    topBtn.style.display = "flex";
-  } else {
-    topBtn.style.display = "none";
-  }
+  topBtn.style.display = window.scrollY > 300 ? "flex" : "none";
 };
+
 topBtn.onclick = (e) => {
   e.preventDefault();
-  window.scrollTo({ top: 0, behavior: "smooth" });
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
 };
 
 // Initialize: show home
