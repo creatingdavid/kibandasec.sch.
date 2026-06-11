@@ -261,7 +261,7 @@ header{
 /* Sections styles - now transparent background and visible */
 section {
   display: none; /* hide all by default */
-  padding: 80px 20px;
+  padding: 80px 2px;
   min-height: 100vh;
   background: lightgray;
 }
@@ -779,8 +779,373 @@ section.active {
     }
 }
 
+.alevel-academics{
+    padding:50px 15px;
+    background:#f7f9fc;
+}
+
+.overview-container{
+    max-width:950px;
+    margin:auto;
+}
+
+/* TITLE */
+.alevel-academics h2{
+    text-align:center;
+    color:#002147;
+    font-size:28px;
+    margin-bottom:10px;
+    position:relative;
+}
+
+.alevel-academics h2::after{
+    content:"";
+    width:80px;
+    height:3px;
+    background:#0077cc;
+    display:block;
+    margin:10px auto 0;
+    border-radius:5px;
+}
+
+/* INTRO TEXT */
+.fee-note{
+    text-align:center;
+    max-width:750px;
+    margin:20px auto 40px;
+    font-size:15px;
+    color:#555;
+    line-height:1.7;
+}
+
+/* SECTION BLOCKS */
+.info-block{
+    background:#ffffff;
+    margin-bottom:25px;
+    padding:22px 25px;
+    border-radius:10px;
+    border-left:5px solid #002147;
+    box-shadow:0 3px 10px rgba(0,0,0,0.06);
+    transition:0.3s ease;
+}
+
+.info-block:hover{
+    transform:translateY(-4px);
+    box-shadow:0 6px 18px rgba(0,0,0,0.1);
+}
+
+/* HEADINGS */
+.info-block h3{
+    color:#002147;
+    font-size:19px;
+    margin-bottom:10px;
+}
+
+/* TEXT */
+.info-block p{
+    font-size:14.5px;
+    color:#444;
+    line-height:1.7;
+}
+
+/* HIGHLIGHT SUBJECTS */
+.info-block b{
+    color:#0077cc;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .alevel-academics{
+        padding:30px 12px;
+    }
+
+    .alevel-academics h2{
+        font-size:22px;
+    }
+
+    .info-block{
+        padding:18px;
+    }
+}
+
+.results-page{
+    padding:40px 15px;
+    background:#f7f9fc;
+    font-family:Arial, sans-serif;
+}
+
+/* HEADER */
+.results-header{
+    text-align:center;
+    max-width:800px;
+    margin:auto;
+    margin-bottom:40px;
+}
+
+.results-header h1{
+    color:#002147;
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.results-header p{
+    color:#555;
+    font-size:15px;
+    line-height:1.7;
+}
+
+/* SECTIONS */
+.results-section{
+    max-width:900px;
+    margin:30px auto;
+}
+
+.results-section h2{
+    color:#002147;
+    font-size:22px;
+    border-left:5px solid #0077cc;
+    padding-left:10px;
+    margin-bottom:15px;
+}
+
+/* CARDS */
+.result-card{
+    background:#fff;
+    padding:18px 20px;
+    margin-bottom:15px;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.06);
+    transition:0.3s;
+}
+
+.result-card:hover{
+    transform:translateY(-3px);
+}
+
+.result-card h3{
+    color:#002147;
+    margin-bottom:8px;
+    font-size:17px;
+}
+
+.result-card p{
+    color:#444;
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .results-header h1{
+        font-size:22px;
+    }
+
+    .results-section h2{
+        font-size:18px;
+    }
+
+    .result-card{
+        padding:15px;
+    }
+}
 
 
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+/* ITEM */
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.gallery-item img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+    transition:0.3s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.1);
+}
+
+/* CAPTION */
+.caption{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    background:rgba(0,0,0,0.6);
+    color:white;
+    font-size:12px;
+    padding:6px;
+    text-align:center;
+}
+
+/* POPUP */
+.gallery-popup{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.85);
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.popup-content{
+    max-width:90%;
+    text-align:center;
+    animation:pop 0.3s ease;
+}
+
+.popup-content img{
+    width:100%;
+    max-height:80vh;
+    border-radius:10px;
+}
+
+.popup-content p{
+    color:white;
+    margin-top:10px;
+    font-size:14px;
+}
+
+
+/* ANIMATION */
+@keyframes pop{
+    from{transform:scale(0.6); opacity:0;}
+    to{transform:scale(1); opacity:1;}
+}
+
+/* MOBILE: 3 PER ROW */
+@media(max-width:768px){
+    .gallery-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .gallery-item img{
+        height:110px;
+    }
+}
+
+
+.contact-header{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.contact-header h1{
+    color:#002147;
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.contact-header p{
+    color:#555;
+    font-size:14px;
+    line-height:1.6;
+}
+
+/* GRID */
+.contact-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin-bottom:30px;
+}
+
+/* CARD */
+.contact-card{
+    background:#fff;
+    padding:18px;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.06);
+}
+
+.contact-card h3{
+    color:#002147;
+    margin-bottom:8px;
+}
+
+.contact-card p{
+    color:#444;
+    font-size:14px;
+}
+
+/* FORM */
+.contact-form-box{
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.06);
+}
+
+.contact-form-box h2{
+    color:#002147;
+    margin-bottom:15px;
+}
+
+.contact-form-box form{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.contact-form-box input,
+.contact-form-box textarea{
+    padding:10px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:14px;
+}
+
+.contact-form-box button{
+    padding:10px;
+    background:#002147;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.contact-form-box button:hover{
+    background:#0077cc;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .contact-grid{
+        grid-template-columns:1fr;
+    }
+
+    .contact-header h1{
+        font-size:22px;
+    }
+}
+
+.map-box{
+    background:#fff;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.06);
+    margin-bottom:30px;
+}
+
+.map-box h2{
+    color:#002147;
+    margin-bottom:15px;
+}
 
 </style>
 </head>
@@ -1639,7 +2004,52 @@ section.active {
 <section id="a-level">
   <h2>A-Level Subjects</h2>
   <div class="subsection">
-    <p>List of A-Level subjects.</p>
+    
+    <!-- A-LEVEL ACADEMICS -->
+<div class="viewers alevel-academics">
+    <div class="overview-container">
+
+        <h2>A-Level Academic Structure</h2>
+
+        <p class="fee-note">
+            Kibanda Secondary School offers a well-structured A-Level programme designed to prepare learners for higher education and professional careers. Students are guided to choose subjects in either Sciences or Arts based on their abilities and career goals.
+        </p>
+
+        <!-- SCIENCES -->
+        <div class="info-block">
+            <h3>Science Department</h3>
+            <p>
+                At Kibanda Secondary School, the Science Department equips learners with strong analytical and practical skills required in science-related careers.
+                Learners are trained through both theory and practical work in well-organized laboratory sessions.
+                <br><br>
+                <b>Subjects Offered:</b> Biology, Chemistry, Physics, Mathematics, ICT
+            </p>
+        </div>
+
+        <!-- ARTS -->
+        <div class="info-block">
+            <h3>Arts Department</h3>
+            <p>
+                The Arts Department at Kibanda Secondary School focuses on developing communication, critical thinking, and leadership skills.
+                It prepares learners for careers in education, law, administration, and social sciences.
+                <br><br>
+                <b>Subjects Offered:</b> History, Geography, Economics, Literature in English, Divinity, Entrepreneurship, General Paper
+            </p>
+        </div>
+
+        <!-- GUIDANCE -->
+        <div class="info-block">
+            <h3>Academic Guidance</h3>
+            <p>
+                Kibanda Secondary School provides continuous academic guidance to help students select subject combinations that match their future careers.
+                Regular assessments, teacher support, and academic follow-up ensure that every learner performs to the best of their ability.
+            </p>
+        </div>
+
+    </div>
+</div>
+    
+    
   </div>
 </section>
 
@@ -1647,23 +2057,163 @@ section.active {
 <section id="results">
   <h2>Results</h2>
   <div class="subsection">
-    <p>School results info.</p>
+    
+    <!-- RESULTS PAGE -->
+<div class="results-page">
+
+    <div class="results-header">
+        <h1>Kibanda Secondary School Results</h1>
+        <p>
+            Kibanda Secondary School is proud of its academic performance in national examinations.
+            Below is a summary of our O-Level and A-Level results.
+        </p>
+    </div>
+
+    <!-- O-LEVEL RESULTS -->
+    <div class="results-section">
+        <h2>O-Level (UCE) Results</h2>
+
+        <div class="result-card">
+            <h3>Performance Summary</h3>
+            <p>
+                Kibanda Secondary School continues to record improved performance in UCE examinations.
+                Most students pass in Division 1 and Division 2.
+            </p>
+        </div>
+
+        <div class="result-card">
+            <h3>Key Highlights</h3>
+            <p>
+                • High pass rate in sciences and mathematics<br>
+                • Improved English and ICT performance<br>
+                • Strong discipline contributing to academic success
+            </p>
+        </div>
+    </div>
+
+    <!-- A-LEVEL RESULTS -->
+    <div class="results-section">
+        <h2>A-Level (UACE) Results</h2>
+
+        <div class="result-card">
+            <h3>Performance Summary</h3>
+            <p>
+                Our A-Level students perform well in national examinations with many qualifying for university admission each year.
+            </p>
+        </div>
+
+        <div class="result-card">
+            <h3>Key Highlights</h3>
+            <p>
+                • Strong performance in science combinations (PCM, PCB)<br>
+                • Improved arts results in humanities subjects<br>
+                • Increased university admission rate
+            </p>
+        </div>
+    </div>
+
+    <!-- TOP STUDENTS -->
+    <div class="results-section">
+        <h2>Top Performing Students</h2>
+
+        <div class="result-card">
+            <h3>Academic Excellence</h3>
+            <p>
+                Kibanda Secondary School recognizes outstanding students every year for their academic excellence and discipline.
+                These students serve as role models to others.
+            </p>
+        </div>
+    </div>
+
+</div>
+    
+    
   </div>
 </section>
 
-
-<section id="students">
-  <h2>Students Life</h2>
-  <div class="subsection">
-    <p>Student life info.</p>
-  </div>
-</section>
 
 
 <section id="leadership">
   <h2>Leadership</h2>
   <div class="subsection">
-    <p>Leadership activities info.</p>
+    
+    <!-- STUDENT LEADERSHIP SECTION -->
+<div class="leaders-section">
+  <div class="leaders-grid">
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>John Kato</h3>
+      <p class="position">Head Prefect</p>
+      <p class="message">Leads students in discipline and represents the student body.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Mary Nanyonga</h3>
+      <p class="position">Deputy Head Prefect</p>
+      <p class="message">Assists in managing student activities and leadership duties.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>James Okello</h3>
+      <p class="position">Academic Prefect</p>
+      <p class="message">Encourages students to focus on studies and academic excellence.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Sarah Atim</h3>
+      <p class="position">Games Prefect</p>
+      <p class="message">Promotes sports and physical activities in school.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Peter Ouma</h3>
+      <p class="position">Discipline Prefect</p>
+      <p class="message">Ensures students follow school rules and maintain order.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Grace Auma</h3>
+      <p class="position">Health Prefect</p>
+      <p class="message">Promotes cleanliness and good health habits in school.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>David Okello</h3>
+      <p class="position">Entertainment Prefect</p>
+      <p class="message">Organizes school events, music, and entertainment activities.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Esther Namusoke</h3>
+      <p class="position">Time Keeper</p>
+      <p class="message">Ensures punctuality during lessons and school programs.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Robert Mugisha</h3>
+      <p class="position">Library Prefect</p>
+      <p class="message">Ensures proper use and discipline in the library.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Jane Nankya</h3>
+      <p class="position">Sanitation Prefect</p>
+      <p class="message">Maintains cleanliness and hygiene in school surroundings.</p>
+    </div>
+
+  </div>
+</div>
+    
   </div>
 </section>
 
@@ -1671,7 +2221,72 @@ section.active {
 <section id="clubs">
   <h2>Clubs</h2>
   <div class="subsection">
-    <p>Clubs info.</p>
+    
+    <!-- CLUBS SECTION -->
+<div class="viewers clubs">
+    <div class="overview-container">
+        <div class="facilities-grid">
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <h3>Science Club</h3>
+                <p><b>Motto:</b> Explore • Discover • Innovate</p>
+                <p>We conduct experiments, research, and science innovations to build practical skills.</p>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <h3>ICT Club</h3>
+                <p><b>Motto:</b> Code • Create • Connect</p>
+                <p>We promote computer skills, programming, and digital innovation among learners.</p>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <h3>Debate Club</h3>
+                <p><b>Motto:</b> Speak with Logic</p>
+                <p>We build confidence in public speaking, argumentation, and critical thinking.</p>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <h3>Mathematics Club</h3>
+                <p><b>Motto:</b> Think • Solve • Achieve</p>
+                <p>We strengthen problem-solving skills and love for mathematics.</p>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <h3>Environmental Club</h3>
+                <p><b>Motto:</b> Save Nature, Save Life</p>
+                <p>We promote tree planting, cleanliness, and environmental conservation.</p>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <h3>Music & Drama Club</h3>
+                <p><b>Motto:</b> Talent in Action</p>
+                <p>We develop talents in music, dance, acting, and cultural performances.</p>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <h3>Religious Union</h3>
+                <p><b>Motto:</b> Faith • Unity • Discipline</p>
+                <p>We strengthen moral values, spiritual growth, and unity among students.</p>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <h3>Agriculture Club</h3>
+                <p><b>Motto:</b> Grow to Sustain</p>
+                <p>We learn modern farming methods and promote agricultural development.</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+    
   </div>
 </section>
 
@@ -1679,7 +2294,46 @@ section.active {
 <section id="sports">
   <h2>Sports</h2>
   <div class="subsection">
-    <p>Sports activities info.</p>
+     
+     <!-- SPORTS SECTION -->
+<div class="viewers sports">
+    <div class="overview-container">
+        <div class="facilities-grid">
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <h3>Football</h3>
+                <p><b>Motto:</b> Play with Passion</p>
+                <p>We develop teamwork, discipline, and physical fitness through football competitions.</p>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <h3>Athletics</h3>
+                <p><b>Motto:</b> Run for Excellence</p>
+                <p>We train students in track and field events to build speed, strength, and endurance.</p>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <h3>Netball</h3>
+                <p><b>Motto:</b> Unity in Action</p>
+                <p>We promote teamwork, coordination, and discipline through netball activities.</p>
+            </div>
+
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <h3>Basketball</h3>
+                <p><b>Motto:</b> Aim High, Play Hard</p>
+                <p>We develop agility, strategy, and teamwork through basketball training.</p>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+     
   </div>
 </section>
 
@@ -1687,7 +2341,99 @@ section.active {
 <section id="gallery">
   <h2>Gallery</h2>
   <div class="subsection">
-    <p>Gallery images.</p>
+     
+     <!-- GALLERY SECTION -->
+<div class="viewers gallery">
+    <div class="overview-container">
+
+        <div class="gallery-grid">
+
+            <div class="gallery-item" onclick="openGallery(this)">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <span class="caption">School Main Building</span>
+            </div>
+
+            <div class="gallery-item" onclick="openGallery(this)">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <span class="caption">Science Laboratory</span>
+            </div>
+
+            <div class="gallery-item" onclick="openGallery(this)">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <span class="caption">Library Section</span>
+            </div>
+
+            <div class="gallery-item" onclick="openGallery(this)">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <span class="caption">Sports Ground</span>
+            </div>
+            <div class="gallery-item" onclick="openGallery(this)">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <span class="caption">Science Laboratory</span>
+            </div>
+
+            <div class="gallery-item" onclick="openGallery(this)">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <span class="caption">Library Section</span>
+            </div>
+
+            <div class="gallery-item" onclick="openGallery(this)">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <span class="caption">Sports Ground</span>
+            </div>
+            <div class="gallery-item" onclick="openGallery(this)">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <span class="caption">Science Laboratory</span>
+            </div>
+
+            <div class="gallery-item" onclick="openGallery(this)">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <span class="caption">Library Section</span>
+            </div>
+
+            <div class="gallery-item" onclick="openGallery(this)">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <span class="caption">Sports Ground</span>
+            </div>
+            <div class="gallery-item" onclick="openGallery(this)">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <span class="caption">Science Laboratory</span>
+            </div>
+
+            <div class="gallery-item" onclick="openGallery(this)">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <span class="caption">Library Section</span>
+            </div>
+
+            <div class="gallery-item" onclick="openGallery(this)">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <span class="caption">Sports Ground</span>
+            </div>
+
+            <div class="gallery-item" onclick="openGallery(this)">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <span class="caption">Students in Class</span>
+            </div>
+
+            <div class="gallery-item" onclick="openGallery(this)">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="">
+                <span class="caption">School Assembly</span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- POPUP VIEW -->
+<div id="galleryPopup" class="gallery-popup" onclick="closeGallery()">
+    <div class="popup-content" onclick="event.stopPropagation()">
+        <img id="popupImg">
+        <p id="popupCaption"></p>
+    </div>
+</div>
+
+     
+     
   </div>
 </section>
 
@@ -1695,7 +2441,78 @@ section.active {
 <section id="contact">
   <h2>Contact</h2>
   <div class="subsection">
-    <p>Contact details.</p>
+     
+     
+     <!-- CONTACT PAGE -->
+<div class="viewers contact">
+
+    <div class="overview-container">
+
+        <div class="contact-header">
+            <h1>Contact Kibanda Secondary School</h1>
+            <p>
+                We are always happy to hear from parents, students, and the community. Reach out to us using the details below.
+            </p>
+        </div>
+
+        <div class="contact-grid">
+
+            <div class="contact-card">
+                <h3>School Address</h3>
+                <p>Kibanda Secondary School</p>
+                <p>Uganda</p>
+            </div>
+
+            <div class="contact-card">
+                <h3>Phone Contacts</h3>
+                <p>+256 700 000 000</p>
+                <p>+256 780 000 000</p>
+            </div>
+
+            <div class="contact-card">
+                <h3>Email</h3>
+                <p>info@kibandasec.sc.ug</p>
+            </div>
+
+            <div class="contact-card">
+                <h3>Office Hours</h3>
+                <p>Monday - Friday</p>
+                <p>8:00 AM - 5:00 PM</p>
+            </div>
+
+        </div>
+
+        <!-- MAP SECTION -->
+        <div class="map-box">
+            <h2>Our Location</h2>
+
+            <iframe 
+src="https://www.google.com/maps?q=Uganda&output=embed"
+width="100%" 
+height="350" 
+style="border:0; border-radius:10px;" 
+allowfullscreen="" 
+loading="lazy">
+</iframe>
+        </div>
+
+        <!-- CONTACT FORM -->
+        <div class="contact-form-box">
+
+            <h2>Send Us a Message</h2>
+
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+
+        </div>
+
+    </div>
+</div>
+     
   </div>
 </section>
 
@@ -1876,6 +2693,23 @@ topBtn.onclick = (e) => {
 hideAllSections();
 document.getElementById("home").classList.add("active");
 </script>
+<script>
+function openGallery(item){
+    const img = item.querySelector("img").src;
+    const caption = item.querySelector(".caption").innerText;
+
+    document.getElementById("popupImg").src = img;
+    document.getElementById("popupCaption").innerText = caption;
+
+    document.getElementById("galleryPopup").style.display = "flex";
+}
+
+function closeGallery(){
+    document.getElementById("galleryPopup").style.display = "none";
+}
+</script>
+    
+
 
 </body>
 </html>
