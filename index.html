@@ -17,17 +17,26 @@
   font-family:Arial,sans-serif;
 }
 
-body {
-  background: url("https://i.postimg.cc/kG5v9g9S/images-(5).jpg") center center/cover no-repeat;
-  background-attachment: fixed; /* Fix background so it doesn't scroll */
-  background-size: cover; /* Ensure background covers entire area */
-  overflow-x: hidden;
-  position: relative;
-  min-height: 100vh;
-  /* Optional: Animate zoom-in effect */
-  /* Uncomment the following lines to animate zoom */
-  /* animation: zoomInBackground 10s ease-in-out forwards; */
+/* BODY */
+body{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    min-height: 100vh;
 }
+
+
+.hero{
+  background:
+    linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.5)),
+    url("https://i.postimg.cc/kG5v9g9S/images-(5).jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+  
 
 /* Optional: keyframes for zoom-in effect */
 @keyframes zoomInBackground {
@@ -201,7 +210,7 @@ header{
   right: -100%;
   width: 180px;
   height: 90vh;
-  background: rgba(255, 255, 255, 0.4); /* semi-transparent white */
+  background: rgba(255, 127, 80, 1); /* semi-transparent white */
   z-index: 2000;
   transition: 0.4s;
   overflow-y: auto;
@@ -254,13 +263,14 @@ section {
   display: none; /* hide all by default */
   padding: 80px 20px;
   min-height: 100vh;
-  background: transparent;
+  background: lightgray;
 }
 section.active {
   display: block;
 }
 .subsection {
   margin-top: 20px;
+  
 }
     
 /* =========================
@@ -377,6 +387,8 @@ section.active {
     .footer-section a{
         margin-left:10px;
         font-weight:bold;
+        
+        
     }
 
     .footer-bottom{
@@ -387,6 +399,386 @@ section.active {
         font-size:14px;
     }
 }
+
+/* LEADERS SECTION */
+.leaders-section{
+  margin:0;
+  padding:10px 0;
+}
+
+.leaders-section h2{
+  text-align:center;
+  color:#002147;
+  margin:0 0 15px 0;
+}
+
+/* GRID */
+.leaders-grid{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:10px;
+  margin:0;
+  padding:0;
+}
+
+/* CARD */
+.leader-card{
+  text-align:center;
+  padding:8px;
+  border-radius:10px;
+}
+
+.leader-card img{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  margin:0 auto 8px;
+}
+
+.leader-card h3{
+  font-size:14px;
+  margin:4px 0;
+  color:#002147;
+}
+
+.position{
+  font-size:12px;
+  font-weight:bold;
+  color:#0077cc;
+  margin:2px 0;
+}
+
+.message{
+  font-size:11px;
+  line-height:1.3;
+  margin-top:4px;
+  color:#555;
+}
+
+/* TABLET */
+@media (max-width:1024px){
+  .leaders-grid{
+    grid-template-columns:repeat(3, 1fr);
+  }
+}
+
+/* MOBILE */
+@media (max-width:768px){
+  .leaders-grid{
+    grid-template-columns:repeat(2, 1fr);
+    gap:8px;
+  }
+
+  .leader-card img{
+    width:110px;
+    height:110px;
+  }
+
+  .leader-card h3{
+    font-size:14px;
+  }
+
+  .position,
+  .message{
+    font-size:12px;
+  }
+}
+
+
+/* SCHOOL OVERVIEW */
+.viewers{
+    padding:40px 20px;
+}
+
+.overview-container{
+    max-width:1000px;
+    margin:auto;
+}
+
+.overview-container h2{
+    text-align:center;
+    color:#002147;
+    margin-bottom:20px;
+}
+
+.overview-container p{
+    font-size:16px;
+    line-height:1.8;
+    color:#444;
+    margin-bottom:15px;
+    text-align:justify;
+}
+
+@media(max-width:768px){
+    .viewers{
+        padding:25px 15px;
+    }
+
+    .overview-container p{
+        font-size:16px;
+        line-height:1.7;
+    }
+}
+
+
+/* FACILITIES */
+.facilities{
+    padding:10px 10px;
+}
+
+.facilities h2{
+    text-align:center;
+    color:#002147;
+    margin-bottom:25px;
+}
+
+.facilities-grid{
+    display:grid;
+    grid-template-columns:repeat(1,1fr);
+    gap:20px;
+}
+
+.facility-card{
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+    text-align:center;
+    transition:0.3s;
+}
+
+.facility-card:hover{
+    transform:translateY(-5px);
+}
+
+.facility-card img{
+    width:160px;
+    height:160px;
+    object-fit:cover;
+}
+
+.facility-card h3{
+    margin:10px 0 5px;
+    color:#002147;
+    font-size:16px;
+}
+
+.facility-card p{
+    font-size:13px;
+    color:#555;
+    padding:0 10px 15px;
+    line-height:1.4;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .facilities-grid{
+        grid-template-columns:repeat(1,1fr);
+    }
+}
+
+
+/* DAY SCHOLAR SECTION */
+.fees-day{
+    padding:40px 20px;
+}
+
+.fees-day h2{
+    text-align:center;
+    color:#002147;
+    margin-bottom:20px;
+}
+
+.fee-note{
+    text-align:center;
+    font-size:14px;
+    color:#555;
+    margin-bottom:20px;
+    line-height:1.6;
+}
+
+/* GRID FOR FEES */
+.fees-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+    max-width:700px;
+    margin:auto;
+}
+
+.fee-card{
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.fee-card h3{
+    color:#002147;
+    margin-bottom:10px;
+}
+
+/* INFO BLOCKS */
+.info-block{
+    max-width:800px;
+    margin:25px auto;
+    background:#f9fbff;
+    padding:20px;
+    border-left:5px solid #002147;
+    border-radius:8px;
+}
+
+.info-block h3{
+    color:#002147;
+    margin-bottom:10px;
+}
+
+.info-block p{
+    font-size:14px;
+    color:#444;
+    line-height:1.6;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .fees-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+
+/* BOARDING SECTION */
+.fees-boarding{
+    padding:40px 20px;
+}
+
+.fees-boarding h2{
+    text-align:center;
+    color:#002147;
+    margin-bottom:20px;
+}
+
+.fee-note{
+    text-align:center;
+    font-size:14px;
+    color:#555;
+    margin-bottom:20px;
+    line-height:1.6;
+}
+
+/* FEES GRID */
+.fees-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+    max-width:900px;
+    margin:auto;
+}
+
+.fee-card{
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.08);
+}
+
+.fee-card h3{
+    color:#002147;
+    margin-bottom:10px;
+}
+
+/* INFO BLOCKS */
+.info-block{
+    max-width:850px;
+    margin:25px auto;
+    background:#f9fbff;
+    padding:20px;
+    border-left:5px solid #002147;
+    border-radius:8px;
+}
+
+.info-block h3{
+    color:#002147;
+    margin-bottom:10px;
+}
+
+.info-block p{
+    font-size:14px;
+    color:#444;
+    line-height:1.6;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .fees-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+
+
+/* A-LEVEL SECTION OVERRIDE (OPTIONAL) */
+.fees-alevel h2{
+    text-align:center;
+    color:#002147;
+    margin-bottom:20px;
+}
+
+.fees-alevel .fee-card{
+    border-top:3px solid #002147;
+}
+
+
+/* O-LEVEL ACADEMICS */
+.olevel-academics{
+    padding:40px 20px;
+}
+
+.olevel-academics h2{
+    text-align:center;
+    color:#002147;
+    margin-bottom:20px;
+}
+
+.olevel-academics .fee-note{
+    text-align:center;
+    font-size:14px;
+    color:#555;
+    margin-bottom:20px;
+    line-height:1.6;
+}
+
+.info-block{
+    max-width:850px;
+    margin:20px auto;
+    background:#f9fbff;
+    padding:20px;
+    border-left:5px solid #002147;
+    border-radius:8px;
+}
+
+.info-block h3{
+    color:#002147;
+    margin-bottom:10px;
+}
+
+.info-block p{
+    font-size:14px;
+    color:#444;
+    line-height:1.6;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+    .olevel-academics{
+        padding:25px 15px;
+    }
+}
+
 
 
 
@@ -406,25 +798,40 @@ section.active {
 <!-- Mobile menu -->
 <div id="mobileMenu" class="mobile-menu">
   <div class="close-btn" id="closeBtn">×</div>
+
   <ul>
+        <li><a href="#home" data-target="home">Home</a></li>
+        
     <li class="dropdown">
       <a href="#about" data-target="about">About Us</a>
       <ul class="submenu" id="aboutSubmenu">
-        <li><a href="#overview" data-target="overview">Overview</a></li>
+        <li>
+            <a href="#overview" data-target="overview">Overview</a></li>
+        
         <li><a href="#board" data-target="board">Board of Directors</a></li>
+        <li><a href="#teachers" data-target="teachers">Academic Staff</a></li>
+        
         <li><a href="#pta" data-target="pta">PTA Committee</a></li>
+        
         <li><a href="#facilities" data-target="facilities">Facilities</a></li>
       </ul>
     </li>
+    
+    
     <li class="dropdown">
       <a href="#fees" data-target="fees">Fees Structure</a>
+      
       <ul class="submenu" id="feesSubmenu">
-        <li><a href="#feesDetails" data-target="feesDetails">Details</a></li>
+        <li><a href="#O-feesDetails" data-target="O-feesDetails">O'Level</a></li>
+        
+        <li><a href="#A-feesDetails" data-target="A-feesDetails">A'Level</a></li>
       </ul>
+      
     </li>
     <li class="dropdown">
       <a href="#academics" data-target="academics">Academics</a>
       <ul class="submenu" id="academicsSubmenu">
+          
         <li><a href="#o-level" data-target="o-level">O-Level Subjects</a></li>
         <li><a href="#a-level" data-target="a-level">A-Level Subjects</a></li>
         <li><a href="#results" data-target="results">Results</a></li>
@@ -456,23 +863,46 @@ section.active {
     <p>Education For Nation Building</p>
     
   </div>
+  
+   <div style="max-width:900px;margin:50px 0;padding:20px;background:rgba(245,245,245,0.1);border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,0.1);text-align:left;">
+    <p style="font-size:16px;line-height:1.5;color:white; margin-bottom:0;">
+        Kibanda Secondary School is dedicated to providing quality education,
+        nurturing discipline, and developing future leaders. We strive to
+        create a safe and supportive learning environment where students can
+        achieve academic excellence, build strong character, and prepare for
+        successful careers and responsible citizenship.
+    </p>
+</div>
+  
 </section>
 
 
 
 <!-- Sample Sections -->
-<section id="about">
-  <h2>About Us</h2>
-  <div class="subsection">
-    <p>Information about the school.</p>
-  </div>
-</section>
-
 
 <section id="overview">
-  <h2>Overview</h2>
+  <h2>School Overview</h2>
   <div class="subsection">
-    <p>School overview details.</p>
+    
+    <!-- SCHOOL OVERVIEW -->
+<div class="viewers">
+    <div class="overview-container">
+
+        <p>
+            Kibanda Secondary School is a center of academic excellence dedicated to providing quality education, nurturing character, and developing responsible citizens. Since its establishment, the school has remained committed to empowering learners with knowledge, skills, and values necessary for success in a rapidly changing world.
+        </p>
+
+        <p>
+            The school offers a supportive and inclusive learning environment where students are encouraged to achieve their full potential academically, socially, and morally. Through a combination of experienced teachers, modern teaching methods, and a strong emphasis on discipline, the school continues to produce confident, innovative, and productive individuals.
+        </p>
+
+        <p>
+            In addition to academics, the school promotes leadership, sports, cultural activities, and community engagement, ensuring the holistic development of every learner. Our mission is to inspire lifelong learning, integrity, and excellence while preparing students to become future leaders and positive contributors to society.
+        </p>
+    </div>
+</div>
+    
+    
   </div>
 </section>
 
@@ -480,55 +910,728 @@ section.active {
 <section id="board">
   <h2>Board of Directors</h2>
   <div class="subsection">
-    <p>Details about the Board of Directors.</p>
+    
+    <!-- TEAM / LEADERS SECTION -->
+<div class="leaders-section">
+  <div class="leaders-grid">
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>John Doe</h3>
+      <p class="position">Head Teacher</p>
+      <p class="message">Committed to academic excellence and discipline.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Mary Smith</h3>
+      <p class="position">Deputy Head Teacher</p>
+      <p class="message">Ensuring smooth school operations and student welfare.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>James Kato</h3>
+      <p class="position">Director of Studies</p>
+      <p class="message">Dedicated to quality teaching and learning.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Sarah Nakato</h3>
+      <p class="position">Senior Woman Teacher</p>
+      <p class="message">Supporting learners' personal growth and wellbeing.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Peter Ouma</h3>
+      <p class="position">Senior Man Teacher</p>
+      <p class="message">Promoting discipline and leadership among students.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Grace Achieng</h3>
+      <p class="position">Bursar</p>
+      <p class="message">Managing school finances efficiently.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>David Okello</h3>
+      <p class="position">ICT Coordinator</p>
+      <p class="message">Leading digital learning and innovation.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Esther Namusoke</h3>
+      <p class="position">Academic Registrar</p>
+      <p class="message">Ensuring accurate academic records management.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Robert Mugisha</h3>
+      <p class="position">Games Teacher</p>
+      <p class="message">Encouraging sportsmanship and talent development.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Jane Nankya</h3>
+      <p class="position">Guidance Counselor</p>
+      <p class="message">Helping students make informed life decisions.</p>
+    </div>
+  </div>
+</div>
+
   </div>
 </section>
+
+  
 
 
 <section id="pta">
   <h2>PTA Committee</h2>
   <div class="subsection">
-    <p>Details about PTA Committee.</p>
+    
+    
+<!-- TEAM / LEADERS SECTION -->
+<div class="leaders-section">
+  <div class="leaders-grid">
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>John Doe</h3>
+      <p class="position">Head Teacher</p>
+      <p class="message">Committed to academic excellence and discipline.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Mary Smith</h3>
+      <p class="position">Deputy Head Teacher</p>
+      <p class="message">Ensuring smooth school operations and student welfare.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>James Kato</h3>
+      <p class="position">Director of Studies</p>
+      <p class="message">Dedicated to quality teaching and learning.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Sarah Nakato</h3>
+      <p class="position">Senior Woman Teacher</p>
+      <p class="message">Supporting learners' personal growth and wellbeing.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Peter Ouma</h3>
+      <p class="position">Senior Man Teacher</p>
+      <p class="message">Promoting discipline and leadership among students.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Grace Achieng</h3>
+      <p class="position">Bursar</p>
+      <p class="message">Managing school finances efficiently.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>David Okello</h3>
+      <p class="position">ICT Coordinator</p>
+      <p class="message">Leading digital learning and innovation.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Esther Namusoke</h3>
+      <p class="position">Academic Registrar</p>
+      <p class="message">Ensuring accurate academic records management.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Robert Mugisha</h3>
+      <p class="position">Games Teacher</p>
+      <p class="message">Encouraging sportsmanship and talent development.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Jane Nankya</h3>
+      <p class="position">Guidance Counselor</p>
+      <p class="message">Helping students make informed life decisions.</p>
+    </div>
+  </div>
+</div>
+
+
   </div>
 </section>
+
+
 
 
 <section id="facilities">
-  <h2>Facilities</h2>
+  <h2>Our Facilities</h2>
   <div class="subsection">
-    <p>Details about facilities.</p>
+    
+ 
+    <!-- FACILITIES SECTION -->
+<div class="viewers facilities">
+    <div class="overview-container">
+        <div class="facilities-grid">
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="Classrooms">
+                <h3>Modern Classrooms</h3>
+                <p>Spacious and well-ventilated classrooms for effective learning.</p>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="Library">
+                <h3>School Library</h3>
+                <p>Well-stocked library with textbooks and reference materials.</p>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="Laboratory">
+                <h3>Science Laboratory</h3>
+                <p>Fully equipped labs for practical science learning.</p>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="Sports">
+                <h3>Sports Grounds</h3>
+                <p>Open fields for football, athletics, and physical education.</p>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="Dormitory">
+                <h3>Student Dormitories</h3>
+                <p>Safe and comfortable accommodation for boarding students.</p>
+            </div>
+
+            <div class="facility-card">
+                <img src="https://i.postimg.cc/wMJT1h9C/images-(3).jpg" alt="ICT Lab">
+                <h3>ICT Laboratory</h3>
+                <p>Computer lab supporting digital learning and ICT skills.</p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+    
   </div>
 </section>
 
 
-<section id="fees">
-  <h2>Fees Structure</h2>
+
+<section id="O-feesDetails">
+  <h2>Ordinary Level Fees Details</h2>
   <div class="subsection">
-    <p>Information on fees.</p>
+    
+<div class="viewers fees-day">
+    <div class="overview-container">
+
+        <h2>O-Level Day Scholars Requirements & Fees</h2>
+
+        <p class="fee-note">
+            The following is the fee structure and requirements for new O-Level day scholars. Lunch is optional and students may choose to either pay or provide food items in kind.
+        </p>
+
+        <!-- FEES -->
+        <div class="fees-grid">
+
+            <div class="fee-card">
+                <h3>S.1 – S.2</h3>
+                <p><b>Total Fee:</b> UGX 150,000</p>
+            </div>
+
+            <div class="fee-card">
+                <h3>S.3 – S.4</h3>
+                <p><b>Total Fee:</b> UGX 180,000</p>
+            </div>
+
+        </div>
+
+        <!-- UNIFORM -->
+        <div class="info-block">
+            <h3>School Uniform (Purchased at School)</h3>
+            <p>
+                Students are required to buy school uniform from the school. This includes:
+                trousers or skirts, T-shirt, and sweater at a total cost of <b>UGX 120,000</b>.
+            </p>
+        </div>
+
+        <!-- LUNCH -->
+        <div class="info-block">
+            <h3>Lunch (Optional)</h3>
+            <p>
+                Lunch contribution is <b>UGX 110,000 per term</b>.<br>
+                Alternatively, students may bring in-kind food items:
+                <br>• 10kg beans
+                <br>• 20kg maize grains
+                <br>• UGX 10,000 cash contribution
+            </p>
+        </div>
+
+        <!-- SCHOOL MATERIALS -->
+        <div class="info-block">
+            <h3>School Requirements (In Kind)</h3>
+            <p>
+                Each student is expected to bring:
+                <br>• 1 broom
+                <br>• 1 ream of photocopying paper
+                <br>• 1 slasher (for cleaning and compound maintenance)
+            </p>
+        </div>
+
+        
+        
+        <!-- O-LEVEL BOARDING SECTION -->
+<div class="viewers fees-boarding">
+    <div class="overview-container">
+
+        <h2>O-Level Boarding Students Requirements & Fees</h2>
+
+        <p class="fee-note">
+            This section outlines the fees and requirements for O-Level boarding students. It includes tuition, accommodation, meals, and essential school needs.
+        </p>
+
+        <!-- FEES -->
+        <div class="fees-grid">
+
+            <div class="fee-card">
+                <h3>S.1 – S.2</h3>
+                <p><b>Total Fee:</b> UGX 750,000</p>
+            </div>
+
+            <div class="fee-card">
+                <h3>S.3</h3>
+                <p><b>Total Fee:</b> UGX 780,000</p>
+            </div>
+
+            <div class="fee-card">
+                <h3>S.4</h3>
+                <p><b>Total Fee:</b> UGX 820,000</p>
+            </div>
+
+        </div>
+
+        <!-- UNIFORM -->
+        <div class="info-block">
+            <h3>School Uniform (Purchased at School)</h3>
+            <p>
+                Boarding students are required to purchase school uniform from the school at a cost of <b>UGX 120,000</b>.
+                This includes trousers/skirts, T-shirts, and sweaters.
+            </p>
+        </div>
+
+        <!-- MEALS -->
+        <div class="info-block">
+            <h3>Meals (Included / Alternative Option)</h3>
+            <p>
+                Meals are provided at school under the boarding package. However, students may alternatively contribute:
+                <br>• 10kg beans
+                <br>• 20kg maize grains
+                <br>• UGX 10,000 cash contribution
+            </p>
+        </div>
+
+        <!-- SCHOOL MATERIALS -->
+        <div class="info-block">
+            <h3>School Requirements (In Kind)</h3>
+            <p>
+                Boarding students must bring:
+                <br>• 1 broom
+                <br>• 1 ream of photocopying paper
+                <br>• 1 slasher
+            </p>
+        </div>
+
+        <!-- PERSONAL ITEMS -->
+        <div class="info-block">
+            <h3>Personal Requirements</h3>
+            <p>
+                Students should come with:
+                <br>• Mattress, bedsheets, and blanket
+                <br>• Mosquito net
+                <br>• Trunk/suitcase
+                <br>• Plate, cup, and spoon
+                <br>• Toiletries (soap, toothpaste, toothbrush)
+                <br>• Torch/flashlight
+                <br>• School bag and stationery
+            </p>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+    
   </div>
 </section>
 
 
-<section id="feesDetails">
-  <h2>Fees Details</h2>
+<section id="A-feesDetails">
+  <h2>Advanced Level Fees Details</h2>
   <div class="subsection">
-    <p>Detailed fees info.</p>
+    
+    <!-- A-LEVEL SECTION -->
+<div class="viewers fees-alevel">
+    <div class="overview-container">
+
+        <h2>A-Level Students Requirements & Fees</h2>
+
+        <p class="fee-note">
+            This section outlines the fees and requirements for A-Level students (Senior 5 and Senior 6). It includes tuition, boarding/day options, and essential school requirements.
+        </p>
+
+        <!-- FEES -->
+        <div class="fees-grid">
+
+            <div class="fee-card">
+                <h3>S.5</h3>
+                <p><b>Day:</b> UGX 200,000</p>
+                <p><b>Boarding:</b> UGX 850,000</p>
+            </div>
+
+            <div class="fee-card">
+                <h3>S.6</h3>
+                <p><b>Day:</b> UGX 220,000</p>
+                <p><b>Boarding:</b> UGX 880,000</p>
+            </div>
+
+        </div>
+
+        <!-- UNIFORM -->
+        <div class="info-block">
+            <h3>School Uniform (Purchased at School)</h3>
+            <p>
+                A-Level students are required to purchase school uniform at <b>UGX 120,000</b>.
+                This includes trousers/skirts, T-shirts, and sweaters.
+            </p>
+        </div>
+
+        <!-- MEALS -->
+        <div class="info-block">
+            <h3>Meals</h3>
+            <p>
+                Boarding students receive meals at school. Day students may opt for lunch contribution:
+                <br>• UGX 110,000 per term OR
+                <br>• 10kg beans, 20kg maize grains, and UGX 10,000 cash
+            </p>
+        </div>
+
+        <!-- SCHOOL MATERIALS -->
+        <div class="info-block">
+            <h3>School Requirements (In Kind)</h3>
+            <p>
+                Students are required to bring:
+                <br>• 1 broom
+                <br>• 1 ream of photocopying paper
+                <br>• 1 slasher
+            </p>
+        </div>
+
+        <!-- PERSONAL ITEMS -->
+        <div class="info-block">
+            <h3>Personal Requirements</h3>
+            <p>
+                Students should come with:
+                <br>• Mattress, bedsheets, and blanket
+                <br>• Mosquito net
+                <br>• Trunk/suitcase
+                <br>• Plate, cup, and spoon
+                <br>• Toiletries (soap, toothpaste, toothbrush)
+                <br>• Scientific calculator (for science students)
+                <br>• School bag and stationery
+            </p>
+        </div>
+
+    </div>
+</div>
+    
+    
   </div>
 </section>
 
 
-<section id="academics">
-  <h2>Academics</h2>
+
+
+<section id="teachers">
+  <h2>Academic Staff Members</h2>
   <div class="subsection">
-    <p>Academic programs overview.</p>
+     
+    <!-- TEAM / LEADERS SECTION -->
+<div class="leaders-section">
+  <div class="leaders-grid">
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>John Kato</h3>
+      <p class="position">Mathematics</p>
+      <p class="message">I help learners build strong logical thinking and problem-solving skills.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Mary Nanyonga</h3>
+      <p class="position">English Language</p>
+      <p class="message">I guide students to express themselves clearly and confidently.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>James Okello</h3>
+      <p class="position">Physics</p>
+      <p class="message">I simplify science to help learners understand the world around them.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Sarah Atim</h3>
+      <p class="position">Biology</p>
+      <p class="message">I make life sciences practical and easy to understand.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Peter Ouma</h3>
+      <p class="position">Chemistry</p>
+      <p class="message">I explain chemical reactions in a simple and practical way.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Grace Auma</h3>
+      <p class="position">Geography</p>
+      <p class="message">I help learners understand the environment and the earth.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>David Okello</h3>
+      <p class="position">ICT</p>
+      <p class="message">I prepare students for the digital and technological world.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Esther Namusoke</h3>
+      <p class="position">History</p>
+      <p class="message">I bring past events to life for better understanding of society.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Robert Mugisha</h3>
+      <p class="position">Agriculture</p>
+      <p class="message">I teach practical farming and modern agricultural skills.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Jane Nankya</h3>
+      <p class="position">CRE / IRE</p>
+      <p class="message">I guide learners in moral values and spiritual growth.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Brian Kato</h3>
+      <p class="position">Mathematics</p>
+      <p class="message">I strengthen students’ confidence in solving numerical problems.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Faith Nalwoga</h3>
+      <p class="position">English Literature</p>
+      <p class="message">I develop strong reading, writing, and interpretation skills.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Isaac Odoi</h3>
+      <p class="position">Chemistry</p>
+      <p class="message">I make chemistry experiments easy to understand and enjoy.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Gladys Auma</h3>
+      <p class="position">Biology</p>
+      <p class="message">I inspire curiosity about living things and nature.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Henry Ouma</h3>
+      <p class="position">ICT</p>
+      <p class="message">I promote computer literacy and modern technology skills.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Sharon Nanyonga</h3>
+      <p class="position">Literature</p>
+      <p class="message">I help learners analyze stories and improve creativity.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Simon Odongo</h3>
+      <p class="position">Agriculture</p>
+      <p class="message">I train learners in practical and modern farming methods.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Rose Namirembe</h3>
+      <p class="position">CRE</p>
+      <p class="message">I guide students in ethics, values, and spirituality.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Michael Waiswa</h3>
+      <p class="position">Mathematics</p>
+      <p class="message">I help students develop strong analytical skills.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Norah Kuteesa</h3>
+      <p class="position">English</p>
+      <p class="message">I improve communication and writing skills.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Fred Bukenya</h3>
+      <p class="position">Physics</p>
+      <p class="message">I make physics simple, practical, and understandable.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Linda Auma</h3>
+      <p class="position">Biology</p>
+      <p class="message">I inspire learners to explore life sciences deeply.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Patrick Lutaaya</h3>
+      <p class="position">Geography</p>
+      <p class="message">I help learners understand global environments.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Beatrice Namukasa</h3>
+      <p class="position">English</p>
+      <p class="message">I build confidence in reading and communication.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Daniel Kizza</h3>
+      <p class="position">Physics</p>
+      <p class="message">I simplify scientific concepts for better understanding.</p>
+    </div>
+
+    <div class="leader-card">
+      <img src="https://i.postimg.cc/GmCVNWTB/head-teacher-Pearl-of-africa-international-school-scaled.jpg" alt="">
+      <h3>Lucy Arach</h3>
+      <p class="position">Mathematics</p>
+      <p class="message">I help learners excel in numerical thinking.</p>
+    </div>
+
+  </div>
+</div>
+
   </div>
 </section>
+
 
 
 <section id="o-level">
   <h2>O-Level Subjects</h2>
   <div class="subsection">
-    <p>List of O-Level subjects.</p>
+    
+    <!-- O-LEVEL ACADEMIC SECTION -->
+<div class="viewers olevel-academics">
+    <div class="overview-container">
+
+        <h2>O-Level Academic Structure</h2>
+
+        <p class="fee-note">
+            The O-Level academic program is organized into departments to ensure effective teaching, learning, and subject specialization.
+        </p>
+
+        <!-- SCIENCE DEPARTMENT -->
+        <div class="info-block">
+            <h3>Science Department</h3>
+            <p>
+                This department focuses on developing scientific knowledge and practical skills.
+                <br><br>
+                <b>Subjects:</b> Biology, Chemistry, Physics, Mathematics, Agriculture
+            </p>
+        </div>
+
+        <!-- HUMANITIES -->
+        <div class="info-block">
+            <h3>Humanities Department</h3>
+            <p>
+                This department helps students understand society, history, and environment.
+                <br><br>
+                <b>Subjects:</b> History, Geography, CRE/IRE, Literature in English
+            </p>
+        </div>
+
+        <!-- LANGUAGES -->
+        <div class="info-block">
+            <h3>Languages Department</h3>
+            <p>
+                This department strengthens communication and language skills.
+                <br><br>
+                <b>Subjects:</b> English Language, Luganda (or Local Language), Literature
+            </p>
+        </div>
+
+        <!-- PRACTICAL / VOCATIONAL -->
+        <div class="info-block">
+            <h3>Practical & Vocational Department</h3>
+            <p>
+                This department equips students with ICT and life skills for the modern world.
+                <br><br>
+                <b>Subjects:</b> ICT, Entrepreneurship, Computer Studies, Life Skills
+            </p>
+        </div>
+
+        <!-- OVERALL GOAL -->
+        <div class="info-block">
+            <h3>Academic Goal</h3>
+            <p>
+                The O-Level program aims to build a strong foundation for students to succeed in national examinations (UCE)
+                and prepare them for advanced studies at A-Level.
+            </p>
+        </div>
+
+    </div>
+</div>
+    
   </div>
 </section>
 
@@ -613,11 +1716,11 @@ section.active {
     <!-- QUICK LINKS -->
     <div class="footer-section">
       <h4>Quick Links</h4>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#academics">Academics</a>
-      <a href="#contact">Contact</a>
-      <a href="#gallery">Gallery</a>
+      <a href="#home" data-target="home">Home</a>
+      <a href="#about"data-target="about">About</a>
+      <a href="#academics"data-target="academics">Academics</a>
+      <a href="#contact"data-target="contact">Contact</a>
+      <a href="#gallery"data-target="gallery">Gallery</a>
     </div>
     <!-- RESOURCES -->
     <div class="footer-section">
