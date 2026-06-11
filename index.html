@@ -64,7 +64,7 @@ header{
 }
 
  h1 {
-     Color: brown;
+     Color: orange;
      margin-top: 30px;
      margin-bottom:10px;
      font-family:Georgia, serif;
@@ -108,7 +108,7 @@ header{
 
 .search-container{
     position:relative;
-    width:100%;
+    width:80%;
     max-width:600px;
     margin:20px auto;
 }
@@ -1147,9 +1147,40 @@ section.active {
     margin-bottom:15px;
 }
 
+/* Popup Container */
+#customPopup {
+  position: fixed;
+  top: 70px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  min-width: 250px;
+  max-width: 350px;
+  padding: 15px 20px;
+  background: lightgray;
+  color: red;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.5s ease;
+}
+
+/* Show Animation */
+#customPopup.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 </style>
 </head>
 <body>
+
+<div id="customPopup">
+  <span id="popupMessage"></span>
+</div>
 
 <header>
   <div class="logo">
@@ -2534,7 +2565,7 @@ loading="lazy">
     <div class="footer-section">
       <h4>Quick Links</h4>
       <a href="#home" data-target="home">Home</a>
-      <a href="#about"data-target="about">About</a>
+      <a href="#overview"data-target="overview    ">About</a>
       <a href="#academics"data-target="academics">Academics</a>
       <a href="#contact"data-target="contact">Contact</a>
       <a href="#gallery"data-target="gallery">Gallery</a>
@@ -2640,19 +2671,42 @@ document.querySelectorAll('.submenu a').forEach(link => {
   };
 });
 
+// ===============================
+// CUSTOM POPUP WITH AUTO CLOSE
+// ===============================
+
+let popupTimeout;
+
 function showPopup(message) {
   const popup = document.getElementById("customPopup");
   const popupMessage = document.getElementById("popupMessage");
 
   popupMessage.textContent = message;
+
   popup.style.display = "flex";
+
+  // Trigger fade-in
+  setTimeout(() => {
+    popup.classList.add("show");
+  }, 10);
+
+  // Clear previous timeout
+  clearTimeout(popupTimeout);
+
+  // Auto close after 5 seconds
+  popupTimeout = setTimeout(() => {
+    popup.classList.remove("show");
+
+    setTimeout(() => {
+      popup.style.display = "none";
+    }, 500); // Matches CSS transition time
+  }, 5000);
 }
 
-function closePopup() {
-  document.getElementById("customPopup").style.display = "none";
-}
+// ===============================
+// SEARCH FUNCTIONALITY
+// ===============================
 
-// Search functionality
 searchBtn.onclick = () => {
   const query = searchInput.value.toLowerCase().trim();
 
@@ -2675,6 +2729,14 @@ searchBtn.onclick = () => {
     showPopup("Search result not found. Please try another keyword.");
   }
 };
+
+// ===============================
+// EXAMPLE USAGE
+// ===============================
+
+function someFunction() {
+  showPopup("This page says");
+}
 
 // Show back to top button
 window.onscroll = () => {
