@@ -48,6 +48,9 @@ body{
   }
 }
 
+h2{
+   text-align:center;
+}
 header{
   position:fixed;
   top:0;
@@ -1174,6 +1177,7 @@ section.active {
 }
 
 
+
 </style>
 </head>
 <body>
@@ -1255,10 +1259,13 @@ section.active {
       <button class="search-btn" id="searchBtn">🔍</button>
     </div>
       
-    <h1>WELCOME TO KIBANDA SECONDARY SCHOOL</h1>
+    <h1>KIBANDA SECONDARY SCHOOL</h1>
     <p>Education For Nation Building</p>
     
   </div>
+  
+
+
   
    <div style="max-width:900px;margin:50px 0;padding:20px;background:rgba(245,245,245,0.1);border-radius:15px;box-shadow:0 5px 20px rgba(0,0,0,0.1);text-align:left;">
     <p style="font-size:16px;line-height:1.5;color:white; margin-bottom:0;">
@@ -1269,7 +1276,6 @@ section.active {
         successful careers and responsible citizenship.
     </p>
 </div>
-  
 </section>
 
 
@@ -2588,7 +2594,8 @@ loading="lazy">
   </div>
   <div class="footer-bottom" style="text-align:center; margin-top:10px;">
     <p>© 2026 Kibanda Secondary School. All Rights Reserved.</p>
-    <p>Designed By David developer</p>
+    <p>
+    <a style="text-decoration:none;color:white;"href="tel:0788737517">Designed By David developer</a></p>
   </div>
 </footer>
 <!-- Scroll to top -->
@@ -2755,23 +2762,6 @@ topBtn.onclick = (e) => {
 hideAllSections();
 document.getElementById("home").classList.add("active");
 </script>
-<script>
-function openGallery(item){
-    const img = item.querySelector("img").src;
-    const caption = item.querySelector(".caption").innerText;
-
-    document.getElementById("popupImg").src = img;
-    document.getElementById("popupCaption").innerText = caption;
-
-    document.getElementById("galleryPopup").style.display = "flex";
-}
-
-function closeGallery(){
-    document.getElementById("galleryPopup").style.display = "none";
-}
-</script>
-    
-
 
 </body>
 </html>
