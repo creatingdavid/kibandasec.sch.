@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Kibanda Secondary School CMS</title>
+
+<style>
+/* =========================
+   GLOBAL
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f6f9;
+  padding-top: 60px;
+}
+
+h2 {
+  text-align: center;
+  color: brown;
+  margin-top: 0px;
+  margin-bottom: 18px;
+  font-family: Georgia, serif;
+}
+
+/* =========================
+   CMS LAYOUT
+========================= */
+.cms {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* =========================
+   SIDEBAR
+========================= */
+.sidebar {
+  width: 165px;
+  background: #0b3d91;
+  color: #fff;
+  position: fixed;
+  left: -250px;
+  top: 0;
+  bottom: 0;
+  transition: 0.3s;
+  z-index: 1000;
+}
+
+.sidebar.active {
+  left: 0;
+}
+
+.sidebar h2 {
+  padding: 20px;
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  padding: 15px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar ul li:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* =========================
+   TOPBAR
+========================= */
+.topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: #0b3d91;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
+}
+
+.sidebar-toggle {
+  font-size: 24px;
+  cursor: pointer;
+  background: none;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+.main-content {
+  flex: 1;
+  width: 100%;
+  padding: 0;
+}
+
+/* =========================
+   PAGE SYSTEM
+========================= */
+.page {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.page.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   CARDS
+========================= */
+.card {
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+.notice {
+  background: #e8f0ff;
+}
+
+.success {
+  color: green;
+  margin-top: 10px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+/* =========================
+   DASHBOARD
+========================= */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+  margin-top: 15px;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.4s;
+  overflow: hidden;
+}
+
+.stat-card h3 {
+  font-size: 16px;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.stat-card .count {
+  font-size: 26px;
+  font-weight: bold;
+  color: #0b3d91;
+}
+
+.stat-card.zoom {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.5);
+  width: 85%;
+  max-width: 400px;
+  z-index: 9999;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 9990;
+}
+
+.overlay.show {
+  display: block;
+}
+
+/* =========================
+   CATEGORY BUTTONS
+========================= */
+.category-grid {
+  display: flex;
+  overflow-x: auto;
+  gap: 13px;
+  margin-bottom: 15px;
+}
+
+.category-grid button,
+.category-btn {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 18px;
+  border: 1px solid blue;
+  background: #ddd;
+  cursor: pointer;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.category-grid button.active,
+.category-btn.active {
+  background: #0b3d91;
+  color: white;
+  border: 1px solid yellow;
+}
+
+/* =========================
+   CREATE POST
+========================= */
+.create-form input,
+.create-form textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 3px 0;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+}
+
+.create-form textarea {
+  height: 140px;
+  resize: none;
+  border-radius: 10px;
+}
+
+.create-form button,
+.publish-btn {
+  width: 100%;
+  padding: 10px 14px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* =========================
+   FILTERS
+========================= */
+.post-filters {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 10px 0;
+  margin-bottom: 15px;
+}
+
+.filter-btn {
+  padding: 5px 10px;
+  border: none;
+  border-radius: 20px;
+  background: #ddd;
+  cursor: pointer;
+  white-space: nowrap;
+  font-weight: bold;
+}
+
+.filter-btn.active {
+  background: #0b3d91;
+  color: white;
+}
+
+/* =========================
+   POSTS
+========================= */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.post-item {
+  border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 15px;
+      background-color: #f9f9f9;
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+}
+
+.post-item:hover {
+  transform: scale(1.01);
+}
+
+.post-item h3 {
+  margin-bottom: 5px;
+  color: #0b3d91;
+}
+
+.post-meta {
+  font-size: 10px;
+  color: gray;
+  margin-bottom: 8px;
+}
+
+.post-actions {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.post-actions button {
+  padding: 4px 7px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.view-btn {
+  background: #0b3d91;
+  color: white;
+}
+
+.edit-btn {
+  background: orange;
+  color: white;
+}
+
+.delete-btn {
+  background: red;
+  color: white;
+}
+
+/* =========================
+   MODAL
+========================= */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.modal-content {
+  background: white;
+  width: 95%;
+  max-width: 480px;
+  border-radius: 12px;
+  padding: 20px;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.modal-content img,
+#modalImage {
+  width: 100%;
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.modal-close {
+  float: right;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* =========================
+   IMAGE PREVIEW
+========================= */
+.preview-img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-top: 10px;
+  display: none;
+}
+
+/* =========================
+   SETTINGS
+========================= */
+.settings input,
+.settings select {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.settings button,
+#settingsPage button {
+  padding: 10px 15px;
+  background: #0b3d91;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* =========================
+   GLOBAL BUTTON EFFECTS
+========================= */
+button {
+  transition: 0.2s;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+  .main {
+    margin: 0;
+    width: 100%;
+  }
+
+  .topbar {
+    width: 100%;
+    left: 0;
+    margin-left: 0;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+</style>
+</head>
+<body>
+
+<!-- CMS WRAPPER -->
+<div id="cms" class="cms">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+        <button class="sidebar-toggle" onclick="toggleSidebar()">☰</button>
+        <h3 style="color:yellow;">Kibanda Secondary School CMS</h3>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div id="sidebar" class="sidebar">
+        <h2 style="color:yellow; font-size:20px;padding:0; margin-top:25px;">Admin CMS</h2>
+
+        <ul>
+            <li onclick="openPage('dashboardPage')">Dashboard</li>
+            <li onclick="openPage('createPage')">Create Post</li>
+            <li onclick="openPage('managePage')">Manage Posts</li>
+        </ul>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+        <!-- DASHBOARD -->
+        <div id="dashboardPage" class="page active">
+            <div class="card">
+                <h2>Dashboard Statistics</h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card" onclick="openCategoryPosts('Notices')">
+  <h3>Notices</h3>
+  <div class="count" id="countNotices">0 / 0</div>
+</div>
+
+
+                    <div class="stat-card" onclick="openCategoryPosts('Academic')">
+                        <h3>Academic</h3>
+                        <div class="count" id="countAcademic">0 / 0</div>
+                    </div>
+
+                    <div class="stat-card" onclick="openCategoryPosts('Announcements')">
+                        <h3>Announcements</h3>
+                        <div class="count" id="countAnnouncements">0 / 0</div>
+                    </div>
+
+                    <div class="stat-card" onclick="openCategoryPosts('Events')">
+                        <h3>Events</h3>
+                        <div class="count" id="countEvents">0 / 0</div>
+                    </div>
+
+                    <div class="stat-card" onclick="openCategoryPosts('Achievements')">
+                        <h3>Achievements</h3>
+                        <div class="count" id="countAchievements">0 / 0</div>
+                    </div>
+
+                    <div class="stat-card" onclick="openCategoryPosts('Opportunities')">
+                        <h3>Opportunities</h3>
+                        <div class="count" id="countOpportunities">0 / 0</div>
+                    </div>
+
+                    <div class="stat-card" onclick="openCategoryPosts('Admission')">
+                        <h3>Admission</h3>
+                        <div class="count" id="countAdmission">0 / 0</div>
+                    </div>
+
+                    <div class="stat-card" onclick="openCategoryPosts('Gallery')">
+                        <h3>Gallery</h3>
+                        <div class="count" id="countGallery">0 / 0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CREATE -->
+        <div id="createPage" class="page">
+            <div class="card">
+                <h2>CREATE POST</h2>
+
+                <div class="category-grid">
+                    <button onclick="selectCategory(this,'Notices')">Notices</button>
+                    <button onclick="selectCategory(this,'Academic')">Academic</button>
+                    <button onclick="selectCategory(this,'Announcements')">Announcements</button>
+                    <button onclick="selectCategory(this,'Events')">Events</button>
+                    <button onclick="selectCategory(this,'Achievements')">Achievements</button>
+                    <button onclick="selectCategory(this,'Opportunities')">Opportunities</button>
+                    <button onclick="selectCategory(this,'Admission')">Admission</button>
+                    <button onclick="selectCategory(this,'Gallery')">Gallery</button>
+                </div>
+
+                <div class="create-form">
+                    <input type="text" id="postTitle" placeholder="Post Title" />
+                    <textarea id="postDescription" placeholder="Post Description"></textarea>
+                    <input type="file" id="postImage" accept="image/*" onchange="previewImage(event)" />
+                    <img id="imagePreview" class="preview-img" />
+
+                    <button onclick="publishPost()">Publish Post</button>
+                    <p id="postMsg"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- MANAGE -->
+        <div id="managePage" class="page">
+            <div class="card">
+                <h2>Manage Posts</h2>
+
+                <div class="category-grid">
+    <button class="filter-btn" onclick="filterPosts('All', this)">All</button>
+    <button class="filter-btn" onclick="filterPosts('Notices', this)">Notices</button>
+    <button class="filter-btn" onclick="filterPosts('Academic', this)">Academic</button>
+    <button class="filter-btn" onclick="filterPosts('Announcements', this)">Announcements</button>
+    <button class="filter-btn" onclick="filterPosts('Events', this)">Events</button>
+    <button class="filter-btn" onclick="filterPosts('Achievements', this)">Achievements</button>
+    <button class="filter-btn" onclick="filterPosts('Opportunities', this)">Opportunities</button>
+    <button class="filter-btn" onclick="filterPosts('Admission', this)">Admission</button>
+    <button class="filter-btn" onclick="filterPosts('Gallery', this)">Gallery</button>
+</div>
+
+                <div id="postList"></div>
+            </div>
+
+    </div>
+</div>
+
+<!-- MODAL -->
+<div id="postModal" class="modal">
+    <div class="modal-content">
+        <span onclick="closeModal()">✖</span>
+        <h2 id="modalTitle"></h2>
+        <p id="modalMeta"></p>
+        <img id="modalImage" />
+        <p id="modalDesc"></p>
+    </div>
+</div>
+
+
+
+<div id="overlay" class="overlay"></div>
+
+<script type="module">
+// 1. Import Firebase SDK modules
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-analytics.js";
+import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, updateDoc } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
+// 2. Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDeSXxGA40hufPzOXHHIIS7JZWy7RYkROg",
+  authDomain: "kibanda-secondary-school-48547.firebaseapp.com",
+  projectId: "kibanda-secondary-school-48547",
+  storageBucket: "kibanda-secondary-school-48547.appspot.com",
+  messagingSenderId: "397769328330",
+  appId: "1:397769328330:web:113b7b99a25d3197329633",
+  measurementId: "G-WFS9WX0VP5"
+};
+
+// 3. Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const db = getFirestore(app);
+
+// 4. Expose Firestore functions globally
+window.db = db;
+window.collection = collection;
+window.addDoc = addDoc;
+window.getDocs = getDocs;
+window.deleteDoc = deleteDoc;
+window.doc = doc;
+window.updateDoc = updateDoc;
+
+// 5. Variables
+let posts = [];
+let selectedCategory = '';
+
+// 6. Sidebar toggle functions
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('active');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('active');
+}
+
+// 7. Outside click & scroll to close sidebar
+window.addEventListener('click', (event) => {
+  const sidebar = document.getElementById('sidebar');
+  const toggleBtn = document.querySelector('.sidebar-toggle');
+  if (
+    sidebar.classList.contains('active') &&
+    !sidebar.contains(event.target) &&
+    !toggleBtn.contains(event.target)
+  ) {
+    closeSidebar();
+  }
+});
+window.addEventListener('scroll', closeSidebar);
+
+// 8. Page navigation
+function openPage(pageId) { document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+  const pageEl = document.getElementById(pageId);
+  if (pageEl) {
+    pageEl.classList.add('active');
+  } else {
+    console.warn(`Page with id '${pageId}' not found.`);
+  }
+}
+
+// 9. Category selection
+function selectCategory(btn, category) {
+  document.querySelectorAll('.category-grid button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  selectedCategory = category;
+}
+
+// 10. Image preview
+function previewImage(event) {
+  const img = document.getElementById('imagePreview');
+  if (event.target.files && event.target.files[0]) {
+    img.src = URL.createObjectURL(event.target.files[0]);
+    img.style.display = 'block';
+  }
+}
+
+// 11. Load posts from Firebase
+async function loadPosts() {
+  console.log("Loading posts...");
+  posts = [];
+  const postListEl = document.getElementById('postList');
+  if (!postListEl) {
+    console.error("Post list element not found in DOM");
+    return;
+  }
+  try {
+    const snapshot = await getDocs(collection(db, "posts"));
+    snapshot.forEach((docItem) => {
+      posts.push({ id: docItem.id, ...docItem.data() });
+    });
+    console.log("Posts loaded:", posts);
+    updateCounts();
+    renderPosts();
+  } catch (error) {
+    console.error("Error loading posts:", error);
+  }
+}
+
+// 12. Publish new post
+async function publishPost() {
+  const title = document.getElementById('postTitle').value.trim();
+  const desc = document.getElementById('postDescription').value.trim();
+  const imageInput = document.getElementById('postImage');
+  const imageFile = imageInput.files[0];
+
+  if (!title || !desc || !selectedCategory) {
+    document.getElementById('postMsg').innerText = 'Please fill all fields and select a category.';
+    document.getElementById('postMsg').className = 'error';
+    return;
+  }
+
+  let imageData = '';
+  if (imageFile) {
+    imageData = await new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.readAsDataURL(imageFile);
+    });
+  }
+
+  const post = {
+    title,
+    description: desc,
+    image: imageData,
+    category: selectedCategory,
+    date: new Date().toLocaleString()
+  };
+
+  try {
+    await addDoc(collection(db, "posts"), post);
+    document.getElementById('postMsg').innerText = 'Post published successfully!';
+    document.getElementById('postMsg').className = 'success';
+
+    // Reset form
+    document.getElementById('postTitle').value = '';
+    document.getElementById('postDescription').value = '';
+    document.getElementById('postImage').value = '';
+    document.getElementById('imagePreview').style.display = 'none';
+
+    // Reset category selection
+    selectedCategory = '';
+    document.querySelectorAll('.category-grid button').forEach(btn => btn.classList.remove('active'));
+
+    await loadPosts();
+  } catch (error) {
+    console.error(error);
+    document.getElementById('postMsg').innerText = 'Failed to publish post';
+    document.getElementById('postMsg').className = 'error';
+  }
+}
+
+// 13. Update counts
+function updateCounts() {
+  const categories = [
+    'Notices', 'Academic', 'Announcements', 'Events',
+    'Achievements', 'Opportunities', 'Admission', 'Gallery'
+  ];
+  const totalPosts = posts.length;
+
+  categories.forEach(cat => {
+    const count = posts.filter(p => p.category === cat).length;
+    const el = document.getElementById(`count${cat}`);
+    if (el) {
+      el.innerText = `${count} / ${totalPosts}`;
+    }
+  });
+}
+
+// 14. Open posts filtered by category and highlight filter
+function openCategoryPosts(category) {
+  openPage('managePage');
+  renderPosts(category);
+  highlightFilter(category);
+}
+
+ 
+// 15. Render posts with truncation
+function renderPosts(filter = 'All') {
+  const postList = document.getElementById('postList');
+  if (!postList) {
+    console.error("Post list element not found");
+    return;
+  }
+  postList.innerHTML = '';
+
+  // Filter posts as needed
+  const filteredPosts = filter === 'All' ? posts : posts.filter(p => p.category === filter);
+  if (filteredPosts.length === 0) {
+    postList.innerHTML = `<p style="text-align:center;">No posts found.</p>`;
+    return;
+  }
+
+  // Reverse to show newest first
+  const postsToRender = filteredPosts.slice().reverse();
+
+  postsToRender.forEach(post => {
+    // Existing code to create post item...
+    const truncateText = (text, maxLength) => {
+      if (text.length <= maxLength) return text;
+      return text.slice(0, maxLength) + '...';
+    };
+
+    const displayTitle = truncateText(post.title, 15);
+    const displayDescription = truncateText(post.description, 30);
+
+    const div = document.createElement('div');
+    div.className = 'post-item';
+
+    div.innerHTML = `
+      <div style="display:flex; justify-content: space-between; align-items: flex-start;">
+        <div style="flex:1;">
+          <h3>${displayTitle}</h3>
+          <div class="post-meta">${post.date} | ${post.category}</div>
+         
+          ${post.image ? `<img src="${post.image}" style="width:100%; max-height:250px; object-fit:cover; border-radius:10px;">` : ''}
+         <p>${displayDescription}</p>
+        </div>
+        <!-- Three-dot menu -->
+        <div class="manage-menu-container" style="position: relative;">
+          <button class="ellipsis-btn" onclick="toggleManageMenu('${post.id}')" style="background:none; border:none; font-size:30px; cursor:pointer;">&#8942;</button>
+          <div class="manage-menu" id="manageMenu-${post.id}" style="display:none; position: absolute; right: 0; top: 100%; background: skyblue; border: 1px solid #ccc; border-radius: 4px; z-index: 1000;">
+            <button onclick="viewPost('${post.id}')" style="width: 100%; padding: 8px; border: none; background: none; text-align: left;color:yellow;font-weight:bold;">View</button>
+            <button onclick="editPost('${post.id}')" style="width: 100%; padding: 8px; border: none; background: none; text-align: left; color:green;font-weight:bold;">Edit</button>
+            <button onclick="deletePost('${post.id}')" style="width: 100%; padding: 8px; border: none; background: none; text-align: left;color:red;font-weight:bold;">Delete</button>
+          </div>
+        </div>
+      </div>
+    `;
+    postList.appendChild(div);
+  });
+}
+
+window.toggleManageMenu = function(postId) {
+  // Close other menus
+  document.querySelectorAll('.manage-menu').forEach(m => m.style.display = 'none');
+
+  const menu = document.getElementById(`manageMenu-${postId}`);
+  if (menu.style.display === 'block') {
+    menu.style.display = 'none';
+  } else {
+    menu.style.display = 'block';
+  }
+};
+
+// Close all menus on outside click
+window.addEventListener('click', (event) => {
+  if (!event.target.matches('.ellipsis-btn')) {
+    document.querySelectorAll('.manage-menu').forEach(m => m.style.display = 'none');
+  }
+});
+
+// Close menus on scroll
+window.addEventListener('scroll', () => {
+  document.querySelectorAll('.manage-menu').forEach(m => m.style.display = 'none');
+});
+
+// 16. Filter posts by category with filter button highlight
+function filterPosts(category, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderPosts(category);
+}
+
+// 17. View post modal
+function viewPost(id) {
+  const post = posts.find(p => p.id == id);
+  if (!post) return;
+  document.getElementById('modalTitle').innerText = post.title;
+  document.getElementById('modalMeta').innerText = `${post.date} | ${post.category}`;
+  document.getElementById('modalDesc').innerText = post.description;
+  const img = document.getElementById('modalImage');
+  if (post.image) {
+    img.src = post.image;
+    img.style.display = 'block';
+  } else {
+    img.style.display = 'none';
+  }
+  document.getElementById('postModal').style.display = 'flex';
+}
+
+// 18. Close modal
+function closeModal() {
+  document.getElementById('postModal').style.display = 'none';
+}
+
+// 19. Delete post
+async function deletePost(id) {
+  if (!confirm("Are you sure you want to delete this post? Action can't be undo!")) return;
+  const post = posts.find(p => p.id === id);
+  if (!post) {
+    alert("Post not found");
+    return;
+  }
+  
+  try {
+    await deleteDoc(doc(db, "posts", id));
+    await loadPosts();
+    alert("Post deleted");
+  } catch (error) {
+    console.error(error);
+    alert("Failed to delete post");
+  }
+}
+
+// 20. Load posts on startup
+window.onload = async () => {
+  await loadPosts();
+  // Set 'All' as active filter button
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  const allBtn = document.querySelector('.filter-btn[data-category="All"]');
+  if (allBtn) allBtn.classList.add('active');
+  // Render all posts
+  renderPosts('All');
+};
+
+// 21. Edit post
+async function editPost(id) {
+  const post = posts.find(p => p.id == id);
+  if (!post) return;
+  const newTitle = prompt("Edit Title", post.title);
+  if (newTitle === null) return;
+  const newDescription = prompt("Edit Description", post.description);
+  if (newDescription === null) return;
+  try {
+    await updateDoc(doc(db, "posts", id), {
+      title: newTitle.trim(),
+      description: newDescription.trim()
+    });
+    await loadPosts();
+    alert("Post updated");
+  } catch (error) {
+    console.error(error);
+    alert("Failed to update");
+  }
+}
+
+// 22. Make functions globally accessible
+window.openPage = openPage;
+window.toggleSidebar = toggleSidebar;
+window.closeSidebar = closeSidebar;
+window.selectCategory = selectCategory;
+window.previewImage = previewImage;
+window.publishPost = publishPost;
+window.renderPosts = renderPosts;
+window.filterPosts = filterPosts;
+window.viewPost = viewPost;
+window.closeModal = closeModal;
+window.deletePost = deletePost;
+window.editPost = editPost;
+window.openCategoryPosts = openCategoryPosts;
+window.loadPosts = loadPosts; // ensure it's accessible
+
+// 23. Initialize on window load
+window.onload = async () => {
+  await loadPosts();
+};
+</script>
+   
+</body>
+</html>
