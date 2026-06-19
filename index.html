@@ -1044,19 +1044,20 @@ section.active {
 
 .contact-header{
     text-align:center;
-    margin-bottom:30px;
+    margin-bottom:0px;
 }
 
 .contact-header h1{
     color:#002147;
     font-size:28px;
-    margin-bottom:10px;
+    margin-bottom:0px;
 }
 
 .contact-header p{
     color:#555;
     font-size:14px;
     line-height:1.6;
+    margin:0px 10px;
 }
 
 /* GRID */
@@ -1064,7 +1065,7 @@ section.active {
     display:grid;
     grid-template-columns:repeat(2,1fr);
     gap:15px;
-    margin-bottom:30px;
+    margin:30px 10px;
 }
 
 /* CARD */
@@ -1201,6 +1202,7 @@ section.active {
 
   <ul>
         <li><a href="#home" data-target="home">Home</a></li>
+        <li><a href="#updates" data-target="updates">Updates</a></li>
         
     <li class="dropdown">
       <a href="#about" data-target="about">About Us</a>
@@ -1530,18 +1532,13 @@ section.active {
         </div>
 
     </div>
-</div>
-    
+</div>            
   </div>
 </section>
 
 
 
 <section id="O-feesDetails">
-  <h2>Ordinary Level Fees Details</h2>
-  <div class="subsection">
-    
-<div class="viewers fees-day">
     <div class="overview-container">
 
         <h2>O-Level Day Scholars Requirements & Fees</h2>
@@ -1600,9 +1597,8 @@ section.active {
         
         
         <!-- O-LEVEL BOARDING SECTION -->
-<div class="viewers fees-boarding">
+ 
     <div class="overview-container">
-
         <h2>O-Level Boarding Students Requirements & Fees</h2>
 
         <p class="fee-note">
@@ -1675,21 +1671,10 @@ section.active {
             </p>
         </div>
     </div>
-</div>
-
-    </div>
-</div>
-    
-  </div>
 </section>
 
 
 <section id="A-feesDetails">
-  <h2>Advanced Level Fees Details</h2>
-  <div class="subsection">
-    
-    <!-- A-LEVEL SECTION -->
-<div class="viewers fees-alevel">
     <div class="overview-container">
 
         <h2>A-Level Students Requirements & Fees</h2>
@@ -1759,10 +1744,6 @@ section.active {
                 <br>• School bag and stationery
             </p>
         </div>
-
-    </div>
-</div>
-    
     
   </div>
 </section>
@@ -1962,20 +1943,13 @@ section.active {
 
   </div>
 </div>
-
   </div>
 </section>
 
 
 
 <section id="o-level">
-  <h2>O-Level Subjects</h2>
-  <div class="subsection">
-    
-    <!-- O-LEVEL ACADEMIC SECTION -->
-<div class="viewers olevel-academics">
     <div class="overview-container">
-
         <h2>O-Level Academic Structure</h2>
 
         <p class="fee-note">
@@ -2032,20 +2006,14 @@ section.active {
         </div>
 
     </div>
-</div>
+</div
     
   </div>
 </section>
 
 
 <section id="a-level">
-  <h2>A-Level Subjects</h2>
-  <div class="subsection">
-    
-    <!-- A-LEVEL ACADEMICS -->
-<div class="viewers alevel-academics">
     <div class="overview-container">
-
         <h2>A-Level Academic Structure</h2>
 
         <p class="fee-note">
@@ -2081,23 +2049,13 @@ section.active {
                 Kibanda Secondary School provides continuous academic guidance to help students select subject combinations that match their future careers.
                 Regular assessments, teacher support, and academic follow-up ensure that every learner performs to the best of their ability.
             </p>
-        </div>
-
-    </div>
-</div>
-    
-    
+   </div>
   </div>
+ </div>
 </section>
 
 
 <section id="results">
-  <h2>Results</h2>
-  <div class="subsection">
-    
-    <!-- RESULTS PAGE -->
-<div class="results-page">
-
     <div class="results-header">
         <h1>Kibanda Secondary School Results</h1>
         <p>
@@ -2167,7 +2125,6 @@ section.active {
     
   </div>
 </section>
-
 
 
 <section id="leadership">
@@ -2365,8 +2322,6 @@ section.active {
                 <p><b>Motto:</b> Aim High, Play Hard</p>
                 <p>We develop agility, strategy, and teamwork through basketball training.</p>
             </div>
-
-
         </div>
     </div>
 </div>
@@ -2374,6 +2329,385 @@ section.active {
   </div>
 </section>
 
+<section id="updates">
+  <style>
+    h5 {
+      font-size: 16px;
+      padding: 7px 1px;
+      margin:20px 7px;
+      color: green;
+      text-align: center;
+      border:1px solid brown;
+      border-radius:20px;
+    }
+
+    /* =========================
+       CATEGORY BUTTONS
+    ========================= */
+    .category-gridn {
+      display: flex;
+      overflow-x: auto;
+      gap: 13px;
+      margin: 18px 7px;
+    }
+
+    .category-gridn button {
+      padding: 8px 20px;
+      border: none;
+      border-radius: 18px;
+      border: 1px solid blue;
+      background: #ddd;
+      cursor: pointer;
+      font-weight: bold;
+      white-space: nowrap;
+      transition: background 0.3s, color 0.3s, border 0.3s;
+    }
+
+    .category-gridn button.active {
+      background: #0b3d91;
+      color: white;
+      border: 1px solid yellow;
+    }
+
+    /* POST ITEM STYLES */
+    .post-itemn {
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 15px 7px;
+      background-color: #f9f9f9;
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+    }
+
+    .post-itemn:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .post-itemn h3 {
+      margin-top: 0;
+    }
+
+    .post-metan {
+      font-size: 0.7em;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .post-itemn img {
+      width: 100%;
+      max-height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-top: 10px;
+    }
+
+    /* =========================
+       MODAL
+    ========================= */
+    .modaln {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      padding: 2px;
+    }
+    
+    .h5n {
+        font-size:20px;
+        text-align:center;
+        color:brown;
+        margin-bottom:7px;
+    }
+    
+    .modal-contentn {
+      background: white;
+      width: 100%;
+      max-width: 490px;      
+      border-radius: 12px;
+      padding: 20px;
+      max-height: 90vh;
+      overflow: auto;
+      position: relative;
+      margin:10px;
+    }
+
+    .close-btnn {
+      position: absolute;
+      top: 1px;
+      right: 20px;
+      font-size: 2.0em;
+      font-weight: bold;
+      color: red;
+      cursor: pointer;
+    }
+
+    .full-imagen {
+  width: 100%;
+  max-height: 300px; /* or a smaller value like 200px if desired */
+  object-fit: contain;
+  margin-top: 15px;
+  border-radius: 8px;
+}
+  </style>
+</head>
+<body>
+  <h5>EDUCATION FOR NATION BUILDING</h5>
+  <div class="category-gridn">
+    <button onclick="filterByCategoryn('All')" class="active" data-category="All">All</button>
+    <button onclick="filterByCategoryn('Notices')" data-category="Notices">Notices</button>
+    <!-- Repeat for other buttons -->
+    <button onclick="filterByCategoryn('Academic')">Academic</button>
+    <button onclick="filterByCategoryn('Announcements')">Announcements</button>
+    <button onclick="filterByCategoryn('Events')">Events</button>
+    <button onclick="filterByCategoryn('Achievements')">Achievements</button>
+    <button onclick="filterByCategoryn('Opportunities')">Opportunities</button>
+    <button onclick="filterByCategoryn('Admission')">Admission</button>
+    <button onclick="filterByCategoryn('Gallery')">Gallery</button>
+  </div>
+  <div id="postNlist"></div>
+
+  <!-- Modal for full post view -->
+  <div id="fullViewNModal" class="modaln">
+    <div class="modal-contentn">
+      <span class="close-btnn" onclick="closeFullViewn()">&times;</span>
+      <div id="fullPostNContent"></div>
+    </div>
+  </div>
+
+  <!-- Firebase SDKs -->
+  <script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
+import {
+  getFirestore,
+  collection,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/12.14.0/firebase-firestore.js";
+
+/* ---------------------------
+   FIREBASE CONFIG
+--------------------------- */
+const firebaseConfig = {
+  apiKey: "AIzaSyDeSXxGA40hufPzOXHHIIS7JZWy7RYkROg",
+  authDomain: "kibanda-secondary-school-48547.firebaseapp.com",
+  projectId: "kibanda-secondary-school-48547",
+  storageBucket: "kibanda-secondary-school-48547.appspot.com",
+  messagingSenderId: "397769328330",
+  appId: "1:397769328330:web:113b7b99a25d3197329633",
+  measurementId: "G-WFS9WX0VP5"
+};
+
+/* ---------------------------
+   INITIALIZE FIREBASE
+--------------------------- */
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+let postsN = [];
+
+/* ---------------------------
+   LOAD POSTS
+--------------------------- */
+async function loadPostsN() {
+  try {
+    postsN = [];
+
+    const snapshot = await getDocs(collection(db, "posts"));
+
+    snapshot.forEach((docItem) => {
+      postsN.push({
+        id: docItem.id,
+        ...docItem.data()
+      });
+    });
+
+    // Newest posts first
+    postsN.sort((a, b) => {
+      return new Date(b.date) - new Date(a.date);
+    });
+
+    renderPostsN("All");
+
+  } catch (error) {
+    console.error("Error loading posts:", error);
+
+    document.getElementById("postNlist").innerHTML =
+      "<p style='text-align:center;'>Failed to load posts.</p>";
+  }
+}
+
+/* ---------------------------
+   TEXT HELPERS
+--------------------------- */
+function truncateTextN(text = "", maxLength) {
+  if (text.length <= maxLength) return text;
+  return text.substring(0, maxLength) + "...";
+}
+
+function formatTextN(text = "") {
+
+  // Convert URLs to clickable links
+  text = text.replace(
+    /(https?:\/\/[^\s]+)/g,
+    '<a href="$1" target="_blank">$1</a>'
+  );
+
+  // Preserve line breaks
+  text = text.replace(/\n/g, "<br>");
+
+  return text;
+}
+
+/* ---------------------------
+   RENDER POSTS
+--------------------------- */
+function renderPostsN(filter = "All") {
+
+  const postList = document.getElementById("postNlist");
+  postList.innerHTML = "";
+
+  const filteredPosts =
+    filter === "All"
+      ? postsN
+      : postsN.filter(post => post.category === filter);
+
+  if (filteredPosts.length === 0) {
+    postList.innerHTML = `
+      <p style="text-align:center;">
+        No posts found.
+      </p>
+    `;
+    return;
+  }
+
+  filteredPosts.forEach(post => {
+
+    const div = document.createElement("div");
+    div.className = "post-itemn";
+
+    div.innerHTML = `
+      <h3 class="h5n">${truncateTextN(post.title || "", 15)}</h3>
+
+      <div class="post-metan">
+        ${post.date || ""} | ${post.category || ""}
+      </div>
+
+      ${
+        post.image
+          ? `<img src="${post.image}" alt="${post.title || ""}">`
+          : ""
+      }
+
+      <p>
+        ${truncateTextN(post.description || "", 30)}
+      </p>
+    `;
+
+    div.addEventListener("click", () => {
+      openFullViewn(post);
+    });
+
+    postList.appendChild(div);
+  });
+}
+
+/* ---------------------------
+   CATEGORY FILTER
+--------------------------- */
+window.filterByCategoryn = function(category) {
+
+  document
+    .querySelectorAll(".category-gridn button")
+    .forEach(btn => btn.classList.remove("active"));
+
+  document
+    .querySelectorAll(".category-gridn button")
+    .forEach(btn => {
+      if (btn.innerText.trim() === category) {
+        btn.classList.add("active");
+      }
+    });
+
+  renderPostsN(category);
+};
+
+/* ---------------------------
+   OPEN FULL POST
+--------------------------- */
+function openFullViewn(post) {
+
+  const modal = document.getElementById("fullViewNModal");
+  const contentDiv = document.getElementById("fullPostNContent");
+
+  contentDiv.innerHTML = `
+    <h2 class="h5n">${post.title || ""}</h2>
+
+    <div class="post-metan">
+      ${post.date || ""}
+      |
+      ${post.category || ""}
+    </div>
+
+    ${
+      post.image
+        ? `
+          <img
+            src="${post.image}"
+            class="full-imagen"
+            alt="${post.title || ""}"
+          >
+        `
+        : ""
+    }
+
+    <div class="full-description">
+      ${formatTextN(post.description || "")}
+    </div>
+  `;
+
+  document.getElementById("fullViewNModal").style.display = "flex";
+}
+
+/* ---------------------------
+   CLOSE FULL POST
+--------------------------- */
+window.closeFullViewn = function() {
+  document.getElementById("fullViewNModal").style.display = "none";
+};
+
+/* ---------------------------
+   CLOSE WHEN CLICKING OUTSIDE
+--------------------------- */
+document.addEventListener("click", function(e) {
+
+  const modal = document.getElementById("fullViewNModal");
+
+  if (e.target === modal) {
+    closeFullViewn();
+  }
+});
+
+/* ---------------------------
+   ESC KEY CLOSE
+--------------------------- */
+document.addEventListener("keydown", function(e) {
+
+  if (e.key === "Escape") {
+    closeFullViewn();
+  }
+});
+
+/* ---------------------------
+   START APP
+--------------------------- */
+window.onload = async () => {
+  await loadPostsN();
+};
+</script>
+</section>
 
 <section id="gallery">
   <h2>Gallery</h2>
@@ -2476,15 +2810,7 @@ section.active {
 
 
 <section id="contact">
-  <h2>Contact</h2>
-  <div class="subsection">
-     
-     
      <!-- CONTACT PAGE -->
-<div class="viewers contact">
-
-    <div class="overview-container">
-
         <div class="contact-header">
             <h1>Contact Kibanda Secondary School</h1>
             <p>
@@ -2496,7 +2822,7 @@ section.active {
 
             <div class="contact-card">
                 <h3>School Address</h3>
-                <p>Kibanda Secondary School</p>
+                <p> Kiryandongo</br> Kampala Gulu Highway</br>Opposite KTI.</p>
                 <p>Uganda</p>
             </div>
 
@@ -2589,13 +2915,13 @@ loading="lazy">
       <h4>Contact</h4>
       <p>+256 XXX XXX XXX</p>
       <p>info@kibandasecondary.sch.ug</p>
-      <p>Kibanda, Uganda</p>
+      <p> Kiryandongo, Kampala, Uganda</p>
     </div>
   </div>
   <div class="footer-bottom" style="text-align:center; margin-top:10px;">
     <p>© 2026 Kibanda Secondary School. All Rights Reserved.</p>
     <p>
-    <a style="text-decoration:none;color:white;"href="tel:0788737517">Designed By David developer</a></p>
+    <a style="text-decoration:none;color:white;"href="tel:0788737517">click here to call David developer</a></p>
   </div>
 </footer>
 <!-- Scroll to top -->
